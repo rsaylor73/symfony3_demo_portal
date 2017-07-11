@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Aramis Tools!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <style>
+        .pad-top {
+            padding-top:15px;
+        }
+    </style>
+</head>
+<body>
+
+
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Aramis Tools 2.00</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <form class="form-signin navbar-form navbar-right" action="{{ path('login') }}" method="POST">
+                {% if not app.user %}
+                <div class="form-group">
+                    <input type="text" placeholder="Username" id="_username" name="_username" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Password" id="_password" name="_password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-success">Sign in</button>&nbsp;
+                {% elseif app.user %}
+                <input type="button" value="Logout" class="btn btn-warning"
+                onclick="document.location.href='{{ logout_path('main') }}'">
+                {% endif %}
+            </form>
+        </div><!--/.navbar-collapse -->
+    </div>
+</nav>
+
+
+
+
+
+{% block body %}{% endblock %}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
