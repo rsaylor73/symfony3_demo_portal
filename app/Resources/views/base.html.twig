@@ -37,6 +37,9 @@
                     <input type="password" placeholder="Password" id="_password" name="_password" class="form-control" required>
                 </div>
                 <button type="submit" class="btn btn-success">Sign in</button>&nbsp;
+                <input type="button" value="Register" class="btn btn-primary"
+                onclick="document.location.href='register'">
+
                 {% elseif app.user %}
                 <input type="button" value="Logout" class="btn btn-warning"
                 onclick="document.location.href='{{ logout_path('main') }}'">

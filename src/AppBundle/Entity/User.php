@@ -210,27 +210,43 @@ class User implements UserInterface, \Serializable
 
     public function serialize()
     {
-        // TODO: Implement serialize() method.
+        return serialize([
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->email,
+            $this->firstName,
+            $this->lastName,
+        ]);
     }
 
     public function unserialize($serialized)
     {
-        // TODO: Implement unserialize() method.
+        list (
+            $this->id,
+            $this->username,
+            $this->password,
+            $this->email,
+            $this->firstName,
+            $this->lastName
+            ) = unserialize($serialized);
     }
 
     public function getRoles()
     {
-        // TODO: Implement getRoles() method.
+        return [
+            'ROLE_USER',
+        ];
     }
 
     public function getSalt()
     {
-        // TODO: Implement getSalt() method.
+        return null;
     }
 
     public function eraseCredentials()
     {
-        // TODO: Implement eraseCredentials() method.
+        $this->plainPassword = null;
     }
 
 
