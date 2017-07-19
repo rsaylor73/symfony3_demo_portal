@@ -16,9 +16,19 @@ class SecurityControllerController extends Controller
     {
         //$form = $this->createForm(LoginType::class);
 
+        /*
         $form = $this->createForm(LoginType::class,null, [
             'action' => $this->generateUrl('login')
         ]);
+        */
+        $form = $this->get('form.factory')->createNamed(
+            null, // name
+            LoginType::class, // type
+            null, // data
+            [ // options
+                'action' => $this->generateUrl('login')
+            ]
+        );
 
         $form->handleRequest($request);
 
